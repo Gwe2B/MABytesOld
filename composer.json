@@ -1,0 +1,26 @@
+{
+    "name": "flamboyants/mabytes",
+    "authors": [
+        {
+            "name": "Marion Calpena",
+            "role": "Team leader / Front dev"
+        },
+        {
+            "name": "Gwenaël Guiraud",
+            "role": "Back / DB"
+        },
+        {
+            "name": "Hugo Ragiot",
+            "role": "Back / DB"
+        },
+        {
+            "name": "Clément L'Haridont",
+            "role": ""
+        },
+        {
+            "name": "Zakaria Ezzaatarie",
+            "role": ""
+        }
+    ],
+    "require": {}
+}
