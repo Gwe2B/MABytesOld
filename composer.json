@@ -22,5 +22,10 @@
             "role": ""
         }
     ],
-    "require": {}
+    "require": {
+        "laudis/neo4j-php-client": "^2.2",
+        "nyholm/psr7": "^1.4",
+        "nyholm/psr7-server": "^1.0",
+        "kriswallsmith/buzz": "^1.2"
+    }
 }
