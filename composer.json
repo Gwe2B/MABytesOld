@@ -27,5 +27,10 @@
         "nyholm/psr7": "^1.4",
         "nyholm/psr7-server": "^1.0",
         "kriswallsmith/buzz": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "MABytes\\": "model/"
+        }
     }
 }
