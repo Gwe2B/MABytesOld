@@ -19,7 +19,7 @@
         },
         {
             "name": "Zakaria Ezzaatarie",
-            "role": "Portée disparue"
+            "role": "Porté disparue"
         }
     ],
     "require": {
@@ -30,7 +30,9 @@
     },
     "autoload": {
         "psr-4": {
-            "MABytes\\": "model/"
+            "Router\\": "routes/",
+            "App\\": "App/",
+            "Databse\\": "datanse/"
         }
     }
 }
