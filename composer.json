@@ -30,9 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Router\\": "routes/",
-            "App\\": "App/",
-            "Databse\\": "datanse/"
+            "MABytes\\": "model/"
         }
     }
 }

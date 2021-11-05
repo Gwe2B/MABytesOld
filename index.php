@@ -19,6 +19,19 @@ define("CONTROLLERS", ROOT."controllers".DS);
 
 /* ----------------------- Implementation des classes ----------------------- */
 require ROOT."vendor".DS."autoload.php";
+
+// TODO: Find a way to put this variables somewhere else
+$user = 'neo4j';
+$password = '123456';
+$host = 'localhost';
+
+$auth = \Laudis\Neo4j\Authentication\Authenticate::basic($user, $password);
+$bdd = \Laudis\Neo4j\ClientBuilder::create()
+    ->withDriver('bolt', "bolt://$user:$password@$host")
+    ->withDriver('neo4j', "neo4j://$host:7687", $auth)
+    ->withDriver('http', "http://$host:7474")
+    ->withDefaultDriver('neo4j')
+    ->build();
 /* -------------------------------------------------------------------------- */
 
 /* --------------------------------- Routeur -------------------------------- */
