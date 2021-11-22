@@ -5,7 +5,7 @@ namespace MABytes;
 /**
  * User representation from database
  * @author Hugo Ragiot, Gwenaël Guiraud
- * @version 1
+ * @version 2
  */
 class User {
     use Hydrator;
@@ -49,5 +49,19 @@ class User {
         if(!empty($email)) {
             $this->email = $email;
         }
+    }
+
+/* ---------------------- Serialization Implementation ---------------------- */
+    public function __serialize(): array {
+        return array(
+            'id'     => $this->id,
+            'nom'    => $this->nom,
+            'prenom' => $this->prenom,
+            'email'  => $this->email
+        );
+    }
+
+    public function __unserialize(array $data): void {
+        $this->hydrate($data);
     }
 }
