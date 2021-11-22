@@ -65,5 +65,9 @@ if($connected != null) {
 
 $content = ob_get_clean();
 
+if(!isset($pageTitle)) {
+    $pageTitle = "Document";
+}
+
 require VUES."template".DS."base.php";
 /* -------------------------------------------------------------------------- */
