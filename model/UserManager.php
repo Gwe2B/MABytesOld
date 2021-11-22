@@ -46,7 +46,7 @@ class UserManager {
      *  return the corresponding User object 
      */
     public function getUserByMail(string $email, string $password): ?User {
-        $queryResults = $this->bdd->getClient()->runStatements([
+        $queryResults = $this->bdd->runStatements([
             Statement::create(
                 'MATCH (u:Person)
                 WHERE
@@ -78,5 +78,31 @@ class UserManager {
         }
 
         return $result;
+    }
+
+    /**
+     * Create a user into the database identified by `$pwd`
+     * @param User $usr The representation to add into the database
+     * @param string $pwd The password of the user UNCRYPTED
+     */
+    public function createUser(User $usr, string $pwd): void {
+        if(!empty($pwd)) {
+            $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+            $stmt = $this->bdd->runStatements([
+                Statement::create(
+                    'CREATE (n:Person{
+                        nom:$nom, prenom:$prenom,
+                        email:$email, password:$password
+                    })',
+                    array(
+                        'nom'      => $usr->getNom(),
+                        'prenom'   => $usr->getPrenom(),
+                        'email'    => $usr->getEmail(),
+                        'password' => $pwd
+                    )
+                )
+            ]);
+        }
     }
 }
