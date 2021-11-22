@@ -35,17 +35,29 @@ $bdd = \Laudis\Neo4j\ClientBuilder::create()
 /* -------------------------------------------------------------------------- */
 
 /* --------------------------------- Routeur -------------------------------- */
+$connected = null;
 $url = null;
+
+if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+    $connected = unserialize($_SESSION['user']);
+}
 
 if(isset($_GET['url']) && !empty($_GET['url'])) {
     $url = htmlspecialchars($_GET['url']);
 }
 
 ob_start();
-if($url === 'page') {
-    // TODO: Update with correct values
-    require CONTROLLERS."page.php";
-    require VUES."page.php";
+if($connected != null) {
+    if($url === 'logout') {
+        session_destroy();
+        header('Location: /');
+    } else {
+        require CONTROLLERS."acceuil.php";
+        require VUES."acceuil.php";
+    }
+} else if($url === 'inscription') {
+    require CONTROLLERS."inscription.php";
+    require VUES."inscription.php";
 } else {
     require CONTROLLERS."acceuil.php";
     require VUES."acceuil.php";
