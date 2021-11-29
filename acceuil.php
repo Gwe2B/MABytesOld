@@ -1,17 +1,19 @@
 <?php
 
+namespace MABytes; 
+
 require_once dirname(__FILE__).'/vendor/autoload.php';
+require_once("src/Decrypt.php");
 
     use \Laudis\Neo4j\ClientBuilder;
     use \Laudis\Neo4j\Authentication\Authenticate;
     use Laudis\Neo4j\Databags\Statement;
+   
+    $login = "";
+    $password = "";
+    decryptDatabase($login, $password);
 
-    
-    $name = 'Jean-Michel De la Creuse';
-    $surname = 'Pierre';
-    $email = 'Pierre.paul@jack.com';
-
-    $auth = Authenticate::basic('neo4j', '1234');
+    $auth = Authenticate::basic($login, $password);
     
     $client = ClientBuilder::create()
         ->withDriver('bolt', 'bolt://neo4j:123456@localhost')
